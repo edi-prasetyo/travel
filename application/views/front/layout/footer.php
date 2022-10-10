@@ -1,6 +1,6 @@
 <?php
 $meta      = $this->meta_model->get_meta();
-$menu      = $this->menu_model->get_menu();
+$link      = $this->link_model->get_link();
 $page      = $this->page_model->get_page();
 $homepage  = $this->homepage_model->get_homepage();
 ?>
@@ -30,28 +30,20 @@ $homepage  = $this->homepage_model->get_homepage();
                 <i class="far fa-envelope"></i> <?php echo $meta->email ?>
             </div>
             <div class="col-8 col-6 col-md footer">
-                <h4 class="fw-bold">Menu</h4>
+                <h4 class="fw-bold">Link</h4>
                 <ul class="list-unstyled">
-                    <?php foreach ($menu as $menu) : ?>
-                        <li> <a class="text-muted nav-item" href="<?php echo base_url() . $menu->url; ?>">
+                    <?php foreach ($link as $link) : ?>
+                        <li> <a class="text-muted nav-item" href="<?php echo base_url() . $link->link_url; ?>">
                                 <?php if ($this->session->userdata('language') == 'EN') : ?>
-                                    <?php echo $menu->name_en; ?>
+                                    <?php echo $link->link_name_en; ?>
                                 <?php elseif ($this->session->userdata('language') == 'ID') : ?>
-                                    <?php echo $menu->name_id; ?>
+                                    <?php echo $link->link_name; ?>
                                 <?php else : ?>
-                                    <?php echo $menu->name_id; ?>
+                                    <?php echo $link->link_name; ?>
                                 <?php endif; ?>
                             </a>
                         </li>
                     <?php endforeach; ?>
-                    <li> <a class="text-muted nav-item" href="#">
-                            FAQ
-                        </a>
-                    </li>
-                    <li> <a class="text-muted nav-item" href="#">
-                            Ketentuan
-                        </a>
-                    </li>
 
                 </ul>
             </div>
