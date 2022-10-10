@@ -70,6 +70,7 @@ class Link extends CI_Controller
 
             $data = [
                 'link_name'             => $this->input->post('link_name'),
+                'link_name_en'             => $this->input->post('link_name_en'),
                 'link_url'              => $this->input->post('link_url'),
                 'date_created'          => time()
             ];
@@ -102,6 +103,7 @@ class Link extends CI_Controller
             $data = [
                 'id'                    => $id,
                 'link_name'             => $this->input->post('link_name'),
+                'link_name_en'             => $this->input->post('link_name_en'),
                 'link_url'              => $this->input->post('link_url'),
                 'date_updated'          => time()
             ];

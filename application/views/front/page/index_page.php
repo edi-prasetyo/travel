@@ -12,9 +12,34 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h2><a href="<?php echo base_url('page/detail/' . $page->page_slug); ?>" class="text-muted"><?php echo substr($page->page_title, 0, 20); ?></a> </h2>
-                    <p><?php echo substr($page->page_desc, 0, 117); ?>..</p>
-                    <a class="btn btn-outline-info" href="<?php echo base_url('page/detail/' . $page->page_slug); ?>">Baca Selengkapnya</a>
+                    <h2><a href="<?php echo base_url('page/detail/' . $page->page_slug); ?>" class="text-muted">
+
+                            <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                <?php echo substr($page->page_title_en, 0, 20); ?>
+                            <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                <?php echo substr($page->page_title, 0, 20); ?>
+                            <?php else : ?>
+                                <?php echo substr($page->page_title, 0, 20); ?>
+                            <?php endif; ?>
+                        </a> </h2>
+                    <p>
+                        <?php if ($this->session->userdata('language') == 'EN') : ?>
+                            <?php echo substr($page->page_description_en, 0, 117); ?>
+                        <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                            <?php echo substr($page->page_description, 0, 117); ?>
+                        <?php else : ?>
+                            <?php echo substr($page->page_description, 0, 117); ?>
+                            <?php endif; ?>..
+                    </p>
+                    <a class="btn btn-outline-info" href="<?php echo base_url('page/detail/' . $page->page_slug); ?>">
+                        <?php if ($this->session->userdata('language') == 'EN') : ?>
+                            Read More
+                        <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                            Baca Selengkapnya
+                        <?php else : ?>
+                            Baca Selengkapnya
+                        <?php endif; ?>
+                    </a>
                 </div>
             </div>
         </div>

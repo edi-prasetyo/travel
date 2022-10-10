@@ -42,7 +42,7 @@ $meta = $this->meta_model->get_meta();
                 </a>
             </li>
             <p class="text-muted font-weight-bold text-uppercase px-3 small py-2 mb-0"><b>Web Front</b></p>
-            <li class="nav-item">
+
             <li class="nav-item">
                 <a class="nav-link d-flex justify-content-between 
                 <?php if ($this->uri->segment(2) == "homepage" || $this->uri->segment(2) == "post" || $this->uri->segment(2) == "category" || $this->uri->segment(2) == "page" || $this->uri->segment(2) == "service" || $this->uri->segment(2) == "galery" || $this->uri->segment(2) == "video") {
@@ -147,10 +147,18 @@ $meta = $this->meta_model->get_meta();
             </li>
             <li class="nav-item">
                 <a href="<?php echo base_url('admin/bank'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "bank") {
-                                                                                    echo 'bank';
+                                                                                    echo 'active';
                                                                                 } ?>">
                     <i class="feather-pie-chart mr-3  fa-fw"></i>
                     Bank
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo base_url('admin/link'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "link") {
+                                                                                    echo 'active';
+                                                                                } ?>">
+                    <i class="feather-link mr-3  fa-fw"></i>
+                    Link
                 </a>
             </li>
         </ul>

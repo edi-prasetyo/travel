@@ -1,6 +1,6 @@
 <div class="col-md-7 mx-auto">
     <div class="card">
-        <div class="card-header">
+        <div class="card-header bg-white">
             <?php echo $title; ?>
         </div>
         <div class="card-body">
@@ -8,7 +8,7 @@
                 <?php echo $this->session->flashdata('message'); ?>
             </div>
             <?php echo form_open('admin/link/create', array('class' => 'needs-validation', 'novalidate' => 'novalidate')); ?>
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-lg-3 col-form-label">Nama Link <span class="text-danger">*</span>
                 </label>
                 <div class="col-lg-6">
@@ -16,7 +16,15 @@
                     <div class="invalid-feedback">Silahkan masukan nama Link.</div>
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row mb-3">
+                <label class="col-lg-3 col-form-label">Name Link (EN)<span class="text-danger">*</span>
+                </label>
+                <div class="col-lg-6">
+                    <input type="text" class="form-control" name="link_name_en" placeholder="Name Link (EN)" required>
+                    <div class="invalid-feedback">Silahkan masukan nama Link.</div>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
                 <label class="col-lg-3 col-form-label">Url <span class="text-danger">*</span>
                 </label>
                 <div class="col-lg-6">
