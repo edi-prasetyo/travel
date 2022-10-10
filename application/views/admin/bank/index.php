@@ -3,12 +3,14 @@
         <?php echo $title; ?>
         <a href="<?php echo base_url('admin/bank/create'); ?>" class="btn btn-info btn-sm text-white">Buat Data Bank</a>
     </div>
+
     <?php
     if ($this->session->flashdata('message')) {
         echo $this->session->flashdata('message');
         unset($_SESSION['message']);
     }
     ?>
+
     <div class="table-responsive">
         <table class="table">
             <thead class="thead-light">
@@ -32,15 +34,20 @@
                     <td>
                         <a href="<?php echo base_url('admin/bank/update/' . $data->id); ?>" class="btn btn-info btn-sm text-white"><i class="ti-pencil-alt"></i> Edit</a>
                         <?php include "delete.php"; ?>
+
                     </td>
                 </tr>
+
             <?php $no++;
             }; ?>
         </table>
+
         <div class="pagination col-md-12 text-center">
             <?php if (isset($pagination)) {
                 echo $pagination;
             } ?>
         </div>
+
     </div>
+
 </div>

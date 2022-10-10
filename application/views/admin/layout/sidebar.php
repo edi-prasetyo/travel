@@ -145,5 +145,13 @@ $meta = $this->meta_model->get_meta();
                     setting
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="<?php echo base_url('admin/bank'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "bank") {
+                                                                                    echo 'bank';
+                                                                                } ?>">
+                    <i class="feather-pie-chart mr-3  fa-fw"></i>
+                    Bank
+                </a>
+            </li>
         </ul>
     </div>

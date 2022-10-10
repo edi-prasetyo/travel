@@ -2,6 +2,7 @@
                                                                                                     echo $data->id ?>">
     <i class="fa fa-trash-o"></i> Hapus
 </button>
+
 <div class="modal modal-danger fade" id="Delete<?php echo $data->id ?>">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -18,5 +19,8 @@
                 <a href="<?php echo base_url('admin/bank/delete/' . $data->id) ?>" class="btn btn-danger pull-right"><i class="fa fa-trash-o"></i> Ya, Hapus data ini</a>
             </div>
         </div>
+        <!-- /.modal-content -->
     </div>
+    <!-- /.modal-dialog -->
 </div>
+<!-- /.modal -->

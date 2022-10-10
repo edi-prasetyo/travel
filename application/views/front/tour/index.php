@@ -14,7 +14,7 @@
                     <div class="col-md-3 col-12">
                         <div class="card shadow border-0 my-3">
                             <div class="img-frame">
-                                <img src="<?php echo base_url('assets/img/tour/' . $tour->tour_image); ?>" alt="">
+                                <img src="<?php echo base_url('assets/img/tour/thumbs/' . $tour->tour_image); ?>" alt="">
                             </div>
                             <div class="card-body text-center">
                                 <h2 class="card-title">

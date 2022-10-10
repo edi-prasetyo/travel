@@ -257,7 +257,7 @@
                     <div class="card shadow border-0 my-5">
                         <div class="card-image-thumb">
                             <div class="img-frame">
-                                <img src="<?php echo base_url('assets/img/post/' . $post->post_image); ?>" alt="">
+                                <img src="<?php echo base_url('assets/img/post/thumbs/' . $post->post_image); ?>" alt="">
                             </div>
                         </div>
                         <div class="card-body">

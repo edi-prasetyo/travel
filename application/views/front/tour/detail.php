@@ -7,6 +7,7 @@ $link           = $this->link_model->get_link();
 $menu_footer           = $this->menu_model->get_menu();
 $setting        = $this->setting_model->detail();
 $page           = $this->page_model->get_page();
+$bank   = $this->bank_model->get_allbank();
 ?>
 <!DOCTYPE html>
 <html>
@@ -234,22 +235,6 @@ $page           = $this->page_model->get_page();
         </div>
     </main>
     <footer class="bg-white mt-auto">
-        <div class="bg-primary py-md-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 text-light display-6 fw-bold">
-                        <?php if ($this->session->userdata('language') == 'EN') : ?>
-                            Need help ? Contact us
-                        <?php elseif ($this->session->userdata('language') == 'ID') : ?>
-                            Butuh Bantuan ? Hubungi Kami
-                        <?php else : ?>
-                            Butuh Bantuan ? Hubungi Kami
-                        <?php endif; ?>
-                    </div>
-                    <div class="col-md-4 text-light"><span style="font-size:30px;font-weight:700;"><i class="fab fa-whatsapp"></i> <?php echo $meta->whatsapp; ?></span></div>
-                </div>
-            </div>
-        </div>
         <div class="container pt-4 pt-md-5 pb-md-5 border-top ">
             <div class="row">
                 <div class="col-12 col-md-3 contact">
@@ -277,7 +262,18 @@ $page           = $this->page_model->get_page();
                 </div>
                 <div class="col-12 col-md-5">
                     <h4 class="fw-bold">Pembayaran</h4>
-                    <img class="img-fluid" src="<?php echo base_url('assets/img/bank/payment-method.png'); ?>">
+                    <?php if ($setting->payment_gateway == 0) : ?>
+                        <?php foreach ($bank as $bank) : ?>
+
+                            <img width="20%" class="img-fluid" src="<?php echo base_url('assets/img/bank/' . $bank->bank_logo); ?>">
+                            <span class="fw-bold my-auto"><?php echo $bank->bank_number; ?></span>
+                            A.n <?php echo $bank->bank_account; ?><br>
+
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <img class="img-fluid" src="<?php echo base_url('assets/img/bank/payment-method.png'); ?>">
+                    <?php endif; ?>
+
                 </div>
             </div>
         </div>

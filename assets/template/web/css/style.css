@@ -974,23 +974,21 @@ a:link {
 }
 
 .footer{
-	-webkit-transition: margin 0.25s ease-out;
-	-moz-transition: margin 0.25s ease-out;
-	-o-transition: margin 0.25s ease-out;
-	transition: margin 0.25s ease-out;
+	margin: 0;
+  transition: 1.7s;
 }
 .footer ul {
-	-moz-column-count: 3;
+	-moz-column-count: 2;
 	-moz-column-gap: 20px;
-	-webkit-column-count: 2;
+	-webkit-column-count: 1;
 	-webkit-column-gap: 20px;
-	column-count: 3;
+	column-count: 2;
 	column-gap: 20px;
 	background-color: #fff;
+	transition: 1.7s;
 }
 .footer a:hover {
-	margin-left: 5px;
-
+	margin: 4px 5px;
 }
 .contact {
 	font-size: 17px;
