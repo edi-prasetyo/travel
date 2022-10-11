@@ -20,7 +20,7 @@ $bank   = $this->bank_model->get_allbank();
                 <h4 class="fw-bold">Link</h4>
                 <ul class="list-unstyled">
                     <?php foreach ($link as $link) : ?>
-                        <li> <a class="text-muted nav-item" href="<?php echo base_url() . $link->link_url; ?>">
+                        <li> <a class="text-muted nav-item" href="<?php echo $link->link_url; ?>">
                                 <?php if ($this->session->userdata('language') == 'EN') : ?>
                                     <?php echo $link->link_name_en; ?>
                                 <?php elseif ($this->session->userdata('language') == 'ID') : ?>
