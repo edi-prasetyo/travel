@@ -24,9 +24,7 @@
   <meta name="twitter:description" content="<?php echo $deskripsi ?>" />
   <meta name="twitter:title" content="<?php echo $meta->title ?>" />
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/web/vendor/offcanvas/offcanvas.css">
-  <link href="<?php echo base_url('assets/template/web/vendor/icons/feather-icons/feather.css'); ?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/template/web/vendor/icons/fontawesome/css/all.min.css'); ?>" rel="stylesheet">
-  <link rel="stylesheet" href="<?php echo base_url('assets/template/web/vendor/bootstrap-icons/bootstrap-icons.css'); ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/template/web/vendor/flag-icon-css/css/flag-icon.min.css'); ?>">
   <link href="<?php echo base_url('assets/template/web/css/style.css'); ?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/template/web/css/custom.css'); ?>" rel="stylesheet">

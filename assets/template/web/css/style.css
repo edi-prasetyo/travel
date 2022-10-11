@@ -1013,6 +1013,10 @@ a:link {
 .navbar{
 	height: 80px !important;
 }
+.navbar-brand img{
+	width:200px !important;
+	height: auto;
+}
 .img-frame {
 	border-radius: 10px 10px 0 0;
 }
