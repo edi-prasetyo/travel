@@ -18,7 +18,6 @@ class Transaction extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('pdf');
         $this->load->model('transaction_model');
         $this->load->model('bank_model');
         $this->load->library('pagination');

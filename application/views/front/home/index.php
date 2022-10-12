@@ -2,10 +2,7 @@
 <section>
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
 
-        <div class="carousel-inner bg-dark" style="min-height: 450px; background-size: cover; background-image: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,1.9)), url(<?php echo base_url('assets/img/galery/' . $homepage->hero_img); ?>);background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;">
+        <div class="carousel-inner" style="min-height: 450px; background:#011c47;">
 
             <?php $i = 1;
             foreach ($popular_tour as $popular_tour) : ?>

@@ -1,6 +1,6 @@
-<div class="container d-grid gap-2 d-sm-flex justify-content-sm-center my-auto text-muted">
-    <div class="col-md-4">
-        <div class="card m-3">
+<div class="container d-grid gap-2 d-sm-flex justify-content-sm-center my-auto text-muted mt-5 pt-5">
+    <div class="col-md-4 my-5">
+        <div class="card shadow m-3">
             <div class="card-body p-5">
                 <div class="text-muted">
                     <h1 class="h4 mb-4"><i class="feather-arrow-right"></i> Silahkan Login!</h1>
@@ -12,12 +12,12 @@
                 echo form_open('auth',  array('class' => 'needs-validation', 'novalidate' => 'novalidate'))
                 ?>
                 <div class="input-group mb-4">
-                    <span class="input-group-text" id="basic-addon1"><i class="feather-mail"></i></span>
+                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
                     <input type="text" class="form-control form-control-user" name="email" placeholder="Email..." value="<?php echo set_value('email'); ?>" style="text-transform: lowercase" required>
                     <div class="invalid-feedback">Silahkan masukan Email</div>
                 </div>
                 <div class="input-group mb-4">
-                    <span class="input-group-text" id="basic-addon1"><i class="feather-lock"></i></span>
+                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
                     <input type="password" class="form-control form-control-user" name="password" placeholder="Password" required>
                     <div class="invalid-feedback">Silahkan masukan Password</div>
                 </div>
