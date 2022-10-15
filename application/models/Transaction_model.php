@@ -85,6 +85,14 @@ class Transaction_model extends CI_Model
         $query = $this->db->get();
         return $query->row();
     }
+    public function detail_transaction_gateway($order_id)
+    {
+        $this->db->select('*');
+        $this->db->from('transaction');
+        $this->db->where(['order_id' => $order_id]);
+        $query = $this->db->get();
+        return $query->row();
+    }
     // Total Pembelian
 
 

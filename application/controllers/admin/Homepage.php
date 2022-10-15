@@ -15,6 +15,7 @@ class Homepage extends CI_Controller
      * update hero content
      * update service
      * update about
+     * update term
      * 
      */
     public function __construct()
@@ -220,6 +221,35 @@ class Homepage extends CI_Controller
                 ];
             $this->homepage_model->update($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah di Update</div>');
+            redirect(base_url('admin/homepage'), 'refresh');
+        }
+    }
+    // update Term
+    public function term($id)
+    {
+        $homepage = $this->homepage_model->detail_homepage($id);
+        $this->form_validation->set_rules(
+            'term_id',
+            'Ketentuan',
+            'required',
+            array('required'            => '%s Harus Diisi')
+        );
+        if ($this->form_validation->run() === FALSE) {
+            $data = [
+                'title'                   => 'Update Layanan',
+                'homepage'                => $homepage,
+                'content'                 => 'admin/homepage/index'
+            ];
+            $this->load->view('admin/layout/wrapp', $data, FALSE);
+        } else {
+            $data = [
+                'id'                            => $id,
+                'term_id'              => $this->input->post('term_id'),
+                'term_en'              => $this->input->post('term_en'),
+                'updated_at'                    => date('Y-m-d H:i:s')
+            ];
+            $this->homepage_model->update($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah di ubah</div>');
             redirect(base_url('admin/homepage'), 'refresh');
         }
     }

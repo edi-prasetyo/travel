@@ -1,3 +1,7 @@
+<?php $setting = $this->setting_model->detail();
+$term = $this->homepage_model->get_homepage();
+
+?>
 <div class="breadcrumb pt-5">
     <div class="container">
         <ul class="breadcrumb my-auto">
@@ -12,7 +16,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card shadow border-0">
-                        <div class="card-header">
+                        <div class="card-header bg-white">
                             Detail Produk
                         </div>
                         <img src="<?php echo base_url('assets/img/artikel/' . $tour->tour_image); ?>" alt="">
@@ -38,61 +42,61 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">
+                <div class="col-md-6">
+                    <div class="card shadow">
+                        <div class="card-header bg-white">
                             Detail Pemesan
                         </div>
                         <div class="card-body">
-                            <?php echo form_open('order/create'); ?>
+                            <?php echo form_open('order/create',  array('class' => 'needs-validation', 'novalidate' => 'novalidate')); ?>
                             <input type="hidden" name="tour_id" value="<?php echo $tour->tour_id; ?>">
                             <input type="hidden" name="tour_title" value="<?php echo $tour->tour_title; ?>">
                             <input type="hidden" name="price" value="<?php echo $tour->schedule_price; ?>">
                             <input type="hidden" name="tour_date" value="<?php echo $tour->schedule_date; ?>">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="basic-url" class="form-label">Nama Lengkap</label>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon3"><i class="feather-user"></i></span>
-                                        <input type="text" class="form-control" name="fullname" aria-describedby="basic-addon3">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="basic-url" class="form-label">Nomor Whatsapp</label>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon3"><i class="feather-phone"></i></span>
-                                        <input type="text" class="form-control" name="phone" aria-describedby="basic-addon3">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="basic-url" class="form-label">Email</label>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon3"><i class="feather-mail"></i></span>
-                                        <input type="text" class="form-control" name="email" aria-describedby="basic-addon3">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="basic-url" class="form-label">Jumlah Tiket</label>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon3"><i class="feather-tag"></i></span>
-                                        <input type="text" class="form-control" name="quantity">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <label for="basic-url" class="form-label">Alamat</label>
-                                    <div class="input-group mb-3">
-                                        <textarea class="form-control" name="address"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn btn-primary">Proses Checkout</button>
+                            <input type="hidden" name="schedule_id" value="<?php echo $tour->id; ?>">
+                            <input type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="payment" value="<?php if ($setting->payment_gateway == 0) {
+                                                                            echo "manual";
+                                                                        } else {
+                                                                            echo "transfer";
+                                                                        } ?>">
+                            <div class="form-group mb-3">
+                                <label for="basic-url" class="form-label">Nama Lengkap</label>
+                                <input type="text" class="form-control" name="fullname" required>
+                                <div class="invalid-feedback">Silahkan masukan nama</div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="basic-url" class="form-label">Nomor Whatsapp</label>
+                                <input type="text" class="form-control" name="phone" required>
+                                <div class="invalid-feedback">Silahkan masukan Nomor Whatsapp</div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="basic-url" class="form-label">Email</label>
+                                <input type="text" class="form-control" name="email" required>
+                                <div class="invalid-feedback">Silahkan masukan email</div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="basic-url" class="form-label">Alamat</label>
+                                <div class="input-group mb-3">
+                                    <textarea class="form-control" name="address" required></textarea>
+                                    <div class="invalid-feedback">Silahkan masukan Alamat Lengkap</div>
                                 </div>
                             </div>
-                            <?php echo form_close(); ?>
+                            <div class="col-md-12">
+                                <div class="alert alert-success">
+                                    <h4>Syarat dan Ketentuan</h4>
+                                    <?php echo $term->term_id; ?>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary">Proses Checkout</button>
+                            </div>
                         </div>
+                        <?php echo form_close(); ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>

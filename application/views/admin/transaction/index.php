@@ -1,7 +1,6 @@
 <div class="card">
     <div class="card-header bg-white d-flex justify-content-between">
         <h4 class="card-title my-auto"><?php echo $title; ?></h4>
-        <a href="<?php echo base_url('admin/transaction/create'); ?>" class="btn btn-primary text-white"><i class="fa fa-plus"></i> Penjualan</a>
     </div>
 
     <?php
@@ -38,12 +37,12 @@
                     <td><?php echo number_format($data->total_price, 0, ",", "."); ?></td>
 
                     <td>
-                        <?php if ($data->payment_status == 'pending') : ?>
+                        <?php if ($data->status_code == null) : ?>
                             <div class="badge bg-light-warning text-warning">Pending</div>
-                        <?php elseif ($data->payment_status == 'success') : ?>
+                        <?php elseif ($data->status_code == 200) : ?>
                             <div class="badge bg-light-success text-success">Success</div>
-                        <?php elseif ($data->payment_status == 'failed') : ?>
-                            <div class="badge bg-light-danger text-warning">Failed</div>
+                        <?php elseif ($data->status_code == 202) : ?>
+                            <div class="badge bg-light-danger text-danger">Cancel</div>
                         <?php else : ?>
                             <div class="badge bg-light-danger">Expired</div>
                         <?php endif; ?>

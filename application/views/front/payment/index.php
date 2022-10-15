@@ -1,4 +1,5 @@
-<?php $setting = $this->setting_model->detail(); ?>
+<?php $setting = $this->setting_model->detail();
+$meta = $this->meta_model->get_meta() ?>
 <section class="pt-2 pb-2 mt-0 align-items-center d-flex bg-primary" style="min-height: 150px;">
     <div class="container ">
         <div class="row">
@@ -111,7 +112,7 @@
                                 <?php foreach ($bank as $bank) : ?>
                                     Silahkan Transfer Ke Nomor Rekening di bawah ini
                                     <div class="alert alert-success"> <?php echo $bank->bank_name; ?> No. Rek <?php echo $bank->bank_number; ?> Atas Nama <?php echo $bank->bank_account; ?></div>
-                                    <a href="<?php echo $transaction->payment_url; ?>" class="btn btn-success" type="submit">
+                                    <a href="https://wa.me/<?php echo $meta->whatsapp; ?>" class="btn btn-success text-white" type="submit">
                                         <?php if ($this->session->userdata('language') == 'EN') : ?>
                                             <i class="fa-brands fa-whatsapp me-2"></i> Confirmation
                                         <?php elseif ($this->session->userdata('language') == 'ID') : ?>

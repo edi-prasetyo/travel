@@ -20,6 +20,7 @@ class Transaction extends CI_Controller
         parent::__construct();
         $this->load->model('transaction_model');
         $this->load->model('bank_model');
+        $this->load->model('schedule_model');
         $this->load->library('pagination');
     }
     // index
@@ -74,12 +75,41 @@ class Transaction extends CI_Controller
         $this->load->view('admin/layout/wrapp', $data, FALSE);
     }
     // cancel
+    public function paid($id)
+    {
+        $transaction = $this->transaction_model->detail($id);
+        $schedule_id = $transaction->schedule_id;
+        is_login();
+        $data = [
+            'id'                        => $id,
+            'status_code'            => 200,
+        ];
+        $this->transaction_model->update($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success">Transaksi Berhasil</div>');
+        $this->update_stock($schedule_id);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function update_stock($schedule_id)
+    {
+        $schedule = $this->schedule_model->schedule_detail($schedule_id);
+        $update_stock = $schedule->schedule_stock - 1;
+        // var_dump($update_stock);
+        // die;
+        $data = [
+            'id'             => $schedule_id,
+            'schedule_stock'            => $update_stock,
+        ];
+        $this->schedule_model->update_stock($data);
+    }
+
+    // cancel
     public function cancel($id)
     {
         is_login();
         $data = [
             'id'                        => $id,
-            'status'                    => 0,
+            'status_code'                    => 202,
         ];
         $this->transaction_model->update($data);
         $this->session->set_flashdata('message', '<div class="alert alert-danger">Transaksi telah di cancel</div>');

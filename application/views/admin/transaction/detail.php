@@ -1,3 +1,4 @@
+<?php $setting = $this->setting_model->detail(); ?>
 <div class="row mt-6">
     <div class="offset-xl-2 col-xl-8 offset-lg-1 col-lg-10 col-md-12
               col-12">
@@ -31,13 +32,17 @@
                             <div class="col-xl-5 col-lg-6 col-md-12 col-12">
                                 <!-- content  -->
                                 <div>
-                                    <?php if ($transaction->payment_status == 'success') : ?>
-                                        <small class="text-success">
-                                            <?php echo $transaction->payment_status; ?>
+                                    <?php if ($transaction->status_code == null) : ?>
+                                        <small class="text-warning">
+                                            Pending
                                         </small>
-                                    <?php else : ?>
+                                    <?php elseif ($transaction->status_code == 200) : ?>
+                                        <small class="text-success">
+                                            Success
+                                        </small>
+                                    <?php elseif ($transaction->status_code == 202) : ?>
                                         <small class="text-danger">
-                                            <?php echo $transaction->payment_status; ?>
+                                            Failed
                                         </small>
                                     <?php endif; ?>
                                     <p><?php echo $transaction->quantity; ?> x @<?php echo $transaction->price; ?></p>
@@ -75,7 +80,14 @@
                                 <div class="mb-2">
                                     <p class="mb-1">E-mail: <a href="#"><?php echo $transaction->email; ?></a></p>
                                     <p class="mb-1">Phone: <?php echo $transaction->phone; ?></p>
-
+                                    <p class="mb-1">Payment: <?php echo $transaction->payment; ?></p>
+                                    <?php if ($setting->payment_gateway == 0) : ?>
+                                        <?php if ($transaction->status_code == null) : ?>
+                                            <a class="btn btn-success text-white" href="<?php echo base_url('admin/transaction/paid/' . $transaction->id); ?>">Sudah Dibayar</a>
+                                        <?php else : ?>
+                                        <?php endif; ?>
+                                    <?php else : ?>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

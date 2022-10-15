@@ -123,6 +123,35 @@
                         <?php echo form_close(); ?>
                     </div>
                 </div>
+                <div class="card mt-3">
+                    <div class="card-header p-4 bg-white">
+                        <h4 class="mb-0">Syarat dan ketentuan</h4>
+                    </div>
+                    <div class="card-body">
+                        <?php echo form_open('admin/homepage/term/' . $homepage->id); ?>
+                        <div class="form-group row mb-2">
+                            <label class="col-md-4 text-end">Deskripsi Layanan ( ID ) </label>
+                            <div class="col-md-8">
+                                <textarea id="summernote" class="form-control" name="term_id" required><?php echo $homepage->term_id; ?></textarea>
+                                <div class="invalid-feedback">Silahkan Masukan Text.</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <label class="col-md-4 text-end">Service Description ( EN )</label>
+                            <div class="col-md-8">
+                                <textarea id="summernote2" class="form-control" name="term_en" required><?php echo $homepage->term_en; ?></textarea>
+                                <div class="invalid-feedback">Silahkan Masukan Text.</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <label class="col-md-4 text-end"></label>
+                            <div class="col-md-8">
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
+                        <?php echo form_close(); ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

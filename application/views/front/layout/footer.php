@@ -8,8 +8,8 @@ $bank   = $this->bank_model->get_allbank();
 
 ?>
 </main>
-<footer class="bg-white mt-auto">
-    <div class="container pt-4 pt-md-5 pb-md-5 border-top ">
+<footer class="bg-white mt-auto shadow ">
+    <div class="container pt-5 pb-5">
         <div class="row">
             <div class="col-12 col-md-3 contact">
                 <h4 class="fw-bold">Contact</h4>

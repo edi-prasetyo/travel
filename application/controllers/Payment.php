@@ -145,6 +145,7 @@ class Payment extends CI_Controller
                 'va_number'                 => $result['va_numbers'][0]['va_number']
             ];
             $this->transaction_model->update_notif($data);
+            $this->update_stock($order_id);
             redirect(base_url('payment/finish'), 'refresh');
         } elseif ($result['payment_type'] == 'cstore') {
             $data = [
@@ -155,6 +156,7 @@ class Payment extends CI_Controller
                 'payment_code'              => $result['payment_code'],
             ];
             $this->transaction_model->update_notif($data);
+            $this->update_stock($order_id);
             redirect(base_url('payment/finish'), 'refresh');
         } else {
             $data = [
@@ -164,7 +166,24 @@ class Payment extends CI_Controller
                 'payment_type'              => $result['payment_type'],
             ];
             $this->transaction_model->update_notif($data);
+            $this->update_stock($order_id);
             redirect(base_url('payment/finish'), 'refresh');
+        }
+    }
+    // Update Stock
+    public function update_stock($order_id)
+    {
+        $transaction = $this->transaction_model->detail_transaction_gateway($order_id);
+        $schedule_id = $transaction->schedule_id;
+        $schedule = $this->schedule_model->schedule_detail($schedule_id);
+        $update_stock = $schedule->schedule_stock - 1;
+        if ($transaction->status_code == 200) {
+            $data = [
+                'id'             => $schedule_id,
+                'schedule_stock'            => $update_stock,
+            ];
+            $this->schedule_model->update_stock_paymentgateway($data);
+        } else {
         }
     }
     // finish

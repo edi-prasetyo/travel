@@ -63,10 +63,24 @@ class Schedule_model extends CI_Model
         $this->db->where('id', $data['id']);
         $this->db->update('schedule', $data);
     }
+    public function update_stock($data)
+    {
+        $this->db->where('id', $data['id']);
+        $this->db->update('schedule', $data);
+    }
     public function delete($data)
     {
         $this->db->where('id', $data['id']);
         $this->db->delete('schedule', $data);
+    }
+    public function schedule_detail($schedule_id)
+    {
+        $this->db->select('*');
+        $this->db->from('schedule');
+        $this->db->where('id', $schedule_id);
+        // $this->db->limit($limit, $start);
+        $query = $this->db->get();
+        return $query->row();
     }
 
     public function get_schedule($start_date, $end_date)

@@ -157,6 +157,24 @@ $bank   = $this->bank_model->get_allbank();
                             <?php else : ?>
                                 <?php echo $tour->tour_description; ?>
                             <?php endif; ?>
+                            <h3>
+                                <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                    Facility
+                                <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                    Fasilitas
+                                <?php else : ?>
+                                    Fasilitas
+                                <?php endif; ?>
+                            </h3>
+
+                            <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                <?php echo $tour->tour_facility_en; ?>
+                            <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                <?php echo $tour->tour_facility; ?>
+                            <?php else : ?>
+                                <?php echo $tour->tour_facility; ?>
+                            <?php endif; ?>
+
                             <div class="card-footer bg-white">
                                 <div class="row">
                                     <div class="col-md-12">

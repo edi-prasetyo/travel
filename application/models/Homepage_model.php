@@ -11,6 +11,7 @@ class Homepage_model extends CI_Model
   public function get_homepage()
   {
     $query = $this->db->get('homepage');
+    $this->db->where('id', 1);
     return $query->row();
   }
   public function detail_homepage($id)

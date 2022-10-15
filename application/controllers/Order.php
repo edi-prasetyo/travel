@@ -60,9 +60,9 @@ class Order extends CI_Controller
         if ($this->form_validation->run() === FALSE) {
             $data = [
                 'title'                           => 'Order',
-                'content'                         => 'order/trip/index'
+                'content'                         => 'front/order/trip'
             ];
-            $this->load->view('admin/layout/wrapp', $data, FALSE);
+            $this->load->view('front/layout/wrapp', $data, FALSE);
         } else {
             $invoice_number = strtoupper(random_string('numeric', 7));
 
@@ -76,9 +76,11 @@ class Order extends CI_Controller
                 'phone'                 => $this->input->post('phone'),
                 'address'               => $this->input->post('address'),
                 'tour_id'               => $this->input->post('tour_id'),
+                'schedule_id'               => $this->input->post('schedule_id'),
                 'tour_title'            => $this->input->post('tour_title'),
                 'tour_date'             => $this->input->post('tour_date'),
                 'address'               => $this->input->post('address'),
+                'payment'               => $this->input->post('payment'),
                 'quantity'              => $quantity,
                 'price'                 => $price,
                 'total_price'           => $total_price,
