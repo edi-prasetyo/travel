@@ -1,6 +1,7 @@
 <div class="card">
     <div class="card-header bg-white d-flex justify-content-between">
         <h4 class="card-title my-auto"><?php echo $title; ?></h4>
+        <!-- <a href="<?php echo base_url('admin/transaction/create'); ?>" class="btn btn-outline-white">Buat Data</a> -->
     </div>
 
     <?php

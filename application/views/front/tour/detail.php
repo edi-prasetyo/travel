@@ -228,19 +228,31 @@ $bank   = $this->bank_model->get_allbank();
                                             <p>
                                                 <?php echo  date("M", strtotime($data->schedule_date));; ?> <?php echo  date("Y", strtotime($data->schedule_date));; ?>
                                             </p>
+
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-8">
                                         <div class="card-body">
                                             <h2>Rp. <?php echo number_format($data->schedule_price, 0, ",", "."); ?></h2>
                                             <div class="d-grid gap-2">
-                                                <a href="<?php echo base_url('order/trip/' . md5($data->id)); ?>" class="btn btn-success mt-2 text-white">
-                                                    <?php if ($this->session->userdata('language') == 'EN') : ?>
-                                                        Buy Ticket
-                                                    <?php else : ?>
-                                                        Beli Tiket
-                                                    <?php endif; ?>
-                                                </a>
+                                                <?php if ($data->schedule_stock > 0) : ?>
+                                                    <a href="<?php echo base_url('order/trip/' . md5($data->id)); ?>" class="btn btn-success mt-2 text-white">
+                                                        <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                                            Buy Ticket
+                                                        <?php else : ?>
+                                                            Beli Tiket
+                                                        <?php endif; ?>
+                                                    </a>
+                                                <?php else : ?>
+                                                    <a href="" class="btn btn-danger mt-2 text-white disabled">
+                                                        <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                                            Sold Out
+                                                        <?php else : ?>
+                                                            Habis
+                                                        <?php endif; ?>
+                                                    </a>
+                                                <?php endif; ?>
+
                                             </div>
                                         </div>
                                     </div>

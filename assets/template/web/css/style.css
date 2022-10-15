@@ -1014,8 +1014,8 @@ a:link {
 	height: 80px !important;
 }
 .navbar-brand img{
-	width:200px !important;
-	height: auto;
+	width:auto !important;
+	height: 30px;
 }
 .img-frame {
 	border-radius: 10px 10px 0 0;

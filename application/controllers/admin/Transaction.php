@@ -63,6 +63,53 @@ class Transaction extends CI_Controller
         ];
         $this->load->view('admin/layout/wrapp', $data, FALSE);
     }
+    // create
+    public function create()
+    {
+        $this->form_validation->set_rules(
+            'fullname',
+            'Nama',
+            'required',
+            array(
+                'required'                        => '%s Harus Diisi',
+            )
+        );
+        if ($this->form_validation->run() === FALSE) {
+            $data = [
+                'title'                           => 'Order',
+                'content'                         => 'admin/transaction/create'
+            ];
+            $this->load->view('admin/layout/wrapp', $data, FALSE);
+        } else {
+            $invoice_number = strtoupper(random_string('numeric', 7));
+
+            $price = $this->input->post('price');
+            $quantity = $this->input->post('quantity');
+            $total_price = (int)$price * (int)$quantity;
+
+            $data  = [
+                'fullname'              => $this->input->post('fullname'),
+                'email'                 => $this->input->post('email'),
+                'phone'                 => $this->input->post('phone'),
+                'address'               => $this->input->post('address'),
+                'tour_id'               => $this->input->post('tour_id'),
+                'schedule_id'           => $this->input->post('schedule_id'),
+                'tour_title'            => $this->input->post('tour_title'),
+                'tour_date'             => $this->input->post('tour_date'),
+                'address'               => $this->input->post('address'),
+                'payment'               => $this->input->post('payment'),
+                'quantity'              => $quantity,
+                'price'                 => $price,
+                'total_price'           => $total_price,
+                'invoice_number'        => $invoice_number,
+                'payment_status'        => 'pending',
+                'created_at'            => date('Y-m-d')
+            ];
+            $this->transaction_model->create($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah ditambahkan</div>');
+            redirect(base_url('admin/transaction'), 'refresh');
+        }
+    }
     // detail
     public function detail($id)
     {
