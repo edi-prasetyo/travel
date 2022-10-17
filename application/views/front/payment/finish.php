@@ -11,7 +11,7 @@
                             Paket <span><?php echo $transaction_detail->tour_title; ?> </span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
-                            Harga <span><?php echo number_format($transaction_detail->total_amount, 0, ",", "."); ?> </span>
+                            Harga <span><?php echo number_format($transaction_detail->gross_amount, 0, ",", "."); ?> </span>
                         </li>
                     </ul>
                     Terima Kasih Atas Belanja Anda
