@@ -93,6 +93,18 @@ class Transaction_model extends CI_Model
         $query = $this->db->get();
         return $query->row();
     }
+    public function finish($order_id)
+    {
+        $this->db->select('transaction.*, tour.tour_title');
+        $this->db->from('transaction');
+        // Join
+        $this->db->join('tour', 'tour.id = transaction.tour_id', 'LEFT');
+        // $this->db->join('schedule', 'schedule.id = transaction.schedule_id', 'LEFT');
+        //End Join
+        $this->db->where(['transaction.order_id' => $order_id]);
+        $query = $this->db->get();
+        return $query->row();
+    }
     // Total Pembelian
 
 
