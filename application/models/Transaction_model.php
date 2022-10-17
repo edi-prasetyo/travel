@@ -93,6 +93,12 @@ class Transaction_model extends CI_Model
         $query = $this->db->get();
         return $query->row();
     }
+    //Update Notif Midtrans
+    public function update_notif($data)
+    {
+        $this->db->where('order_id', $data['order_id']);
+        $this->db->update('transaction', $data);
+    }
     public function finish($order_id)
     {
         $this->db->select('transaction.*, tour.tour_title');
