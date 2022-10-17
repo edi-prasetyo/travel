@@ -8,7 +8,7 @@
                     Dengan ID Order <b><?php echo $order_id; ?></b><br>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-start">
-                            Paket <span><?php echo $transaction_detail->product_name; ?> </span>
+                            Paket <span><?php echo $transaction_detail->tour_title; ?> </span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             Harga <span><?php echo number_format($transaction_detail->total_amount, 0, ",", "."); ?> </span>

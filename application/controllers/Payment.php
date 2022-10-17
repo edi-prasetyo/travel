@@ -28,6 +28,7 @@ class Payment extends CI_Controller
         $this->output->enable_profiler(FALSE);
         $this->load->model('meta_model');
         $this->load->model('transaction_model');
+        $this->load->model('schedule_model');
         $this->load->model('setting_model');
         $this->load->model('bank_model');
         $this->load->library('pagination');
