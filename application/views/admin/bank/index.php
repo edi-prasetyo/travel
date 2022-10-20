@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header bg-white d-flex justify-content-between align-items-center">
-        <?php echo $title; ?>
-        <a href="<?php echo base_url('admin/bank/create'); ?>" class="btn btn-info btn-sm text-white">Buat Data Bank</a>
+        <h4> <?php echo $title; ?></h4>
+        <a href="<?php echo base_url('admin/bank/create'); ?>" class="btn btn-outline-white">Buat Data Bank</a>
     </div>
 
     <?php

@@ -128,7 +128,15 @@ $bank   = $this->bank_model->get_allbank();
                 <ul class="breadcrumb my-3">
                     <li class="breadcrumb-item"><a class="text-muted" href="<?php echo base_url('') ?>"><i class="ti ti-home"></i> Home</a></li>
                     <li class="breadcrumb-item"><a class="text-muted" href="<?php echo base_url('tour') ?>"> Tour</a></li>
-                    <li class="breadcrumb-item active"><?php echo $tour->tour_title ?></li>
+                    <li class="breadcrumb-item active">
+                        <?php if ($this->session->userdata('language') == 'EN') : ?>
+                            <?php echo $tour->tour_title_en ?>
+                        <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                            <?php echo $tour->tour_title ?>
+                        <?php else : ?>
+                            <?php echo $tour->tour_title ?>
+                        <?php endif; ?>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -210,8 +218,51 @@ $bank   = $this->bank_model->get_allbank();
                 <?php if (!$schedule) : ?>
                     <div class="col-md-12 col-12">
                         <div class="card">
-                            <div class="card-body text-center">
-                                Tidak Ada Jadwal Untuk Saat ini
+                            <div class="card-body">
+                                <h3>
+                                    <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                        Sorry, there is no schedule for this tour
+                                    <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                        Maaf Belum Ada Jadwal Untuk wisata ini
+                                    <?php else : ?>
+                                        Maaf Belum Ada Jadwal Untuk wisata ini
+                                    <?php endif; ?>
+                                </h3>
+                                <p>
+                                    <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                        Please Find Other Tour Schedules
+                                    <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                        Silahkan Cari Jadwal wisata Yang Lain
+                                    <?php else : ?>
+                                        Silahkan Cari Jadwal wisata Yang Lain
+                                    <?php endif; ?>
+                                </p>
+
+                                <?php echo form_open('open_trip', array('method' => 'get', 'class' => 'needs-validation', 'novalidate' => 'novalidate')); ?>
+                                <div class="row">
+                                    <div class="col-md-8">
+
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" name="start_date" placeholder="Tanggal" aria-label="Tanggal" id="startDate">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="d-grid gap-2">
+                                                <button type="submit" class="btn btn-primary" name="submit">
+                                                    <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                                        Search Trip
+                                                    <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                                        Cari Trip
+                                                    <?php else : ?>
+                                                        Cari Trip
+                                                    <?php endif; ?>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php echo form_close(); ?>
                             </div>
                         </div>
                     </div>

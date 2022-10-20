@@ -83,7 +83,7 @@ class Schedule_model extends CI_Model
         return $query->row();
     }
 
-    public function get_schedule($start_date, $end_date)
+    public function get_schedule($start_date)
     {
         $this->db->select('schedule.*, tour.tour_price, tour.tour_views, tour.tour_slug,tour.tour_duration, tour.tour_title, tour.tour_title_en, tour.tour_description, tour.tour_description_en, tour.tour_facility, tour.tour_facility_en, tour.tour_image,');
         $this->db->from('schedule');
@@ -91,8 +91,7 @@ class Schedule_model extends CI_Model
         $this->db->join('tour', 'tour.id = schedule.tour_id', 'LEFT');
         //End Join
         $this->db->group_by('tour_id');
-        $this->db->where('schedule_date >=', $start_date);
-        $this->db->where('schedule_date <=', $end_date);
+        $this->db->where('schedule_date', $start_date);
         // $this->db->limit($limit, $start);
         $query = $this->db->get();
         return $query->result();

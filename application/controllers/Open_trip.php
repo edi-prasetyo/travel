@@ -28,13 +28,13 @@ class Open_trip extends CI_Controller
     {
         $meta       = $this->meta_model->get_meta();
         $start_date = $this->input->get('start_date');
-        $end_date   = $this->input->get('end_date');
-        $tour       = $this->schedule_model->get_schedule($start_date, $end_date);
+        $tour       = $this->schedule_model->get_schedule($start_date);
         $data = array(
             'title'                       => 'Tour',
             'deskripsi'                   => 'Tour - ' . $meta->description,
             'keywords'                    => 'Tour - ' . $meta->keywords,
             'paginasi'                    => $this->pagination->create_links(),
+            'start_date'                  => $start_date,
             'tour'                        => $tour,
             'content'                     => 'front/trip/index'
         );

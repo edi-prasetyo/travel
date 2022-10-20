@@ -1,7 +1,7 @@
 <div class="card">
-    <div class="card-header d-flex flex-row align-items-center justify-content-between">
-        <?php echo $title; ?>
-        <a href="<?php echo base_url('admin/link/create'); ?>" class="btn btn-rounded btn-info text-white">Tambah Link</a>
+    <div class="card-header bg-white d-flex flex-row align-items-center justify-content-between">
+        <h4><?php echo $title; ?></h4>
+        <a href="<?php echo base_url('admin/link/create'); ?>" class="btn btn-outline-white">Buat Data</a>
     </div>
     <?php
     if ($this->session->flashdata('message')) {

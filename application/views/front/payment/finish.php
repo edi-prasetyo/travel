@@ -14,7 +14,7 @@
                             Harga <span><?php echo number_format($transaction_detail->gross_amount, 0, ",", "."); ?> </span>
                         </li>
                     </ul>
-                    Terima Kasih Atas Belanja Anda
+                    Terima Kasih Atas Pesanan Anda
                 <?php else : ?>
                     Pembayaran Dengan ID Order <b><?php echo $order_id; ?></b><br>
                     Masih <?php echo $transaction_status; ?> silahkan selesaikan pembayaran anda

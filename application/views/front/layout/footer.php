@@ -35,7 +35,15 @@ $bank   = $this->bank_model->get_allbank();
                 </ul>
             </div>
             <div class="col-12 col-md-5">
-                <h4 class="fw-bold">Pembayaran</h4>
+                <h4 class="fw-bold">
+                    <?php if ($this->session->userdata('language') == 'EN') : ?>
+                        Payment
+                    <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                        Pembayaran
+                    <?php else : ?>
+                        Pembayaran
+                    <?php endif; ?>
+                </h4>
                 <?php if ($setting->payment_gateway == 0) : ?>
                     <?php foreach ($bank as $bank) : ?>
 
@@ -71,47 +79,18 @@ $bank   = $this->bank_model->get_allbank();
             format: 'YYYY-MM-DD',
             minDate: minDate
         });
-        // $('#startDate').datetimepicker({
-        //     locale: 'id',
-        //     format: 'YYYY-MM-DD',
-        //     minDate: minDate
-        // });
-        // $('#endDate').datetimepicker({
-        //     locale: 'id',
-        //     format: 'YYYY-MM-DD',
-        //     minDate: minDate
-        // });
+        $('#startDate').datetimepicker({
+            locale: 'id',
+            format: 'YYYY-MM-DD',
+            minDate: minDate
+        });
+        $('#endDate').datetimepicker({
+            locale: 'id',
+            format: 'YYYY-MM-DD',
+            minDate: minDate
+        });
     });
     $("#id_tanggal").keydown(false);
-</script>
-
-
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css" integrity="sha512-lvdq1fIyCp6HMWx1SVzXvGC4jqlX3e7Xm7aCBrhj5F1WdWoLe0dBzU0Sy10sheZYSkJpJcboMNO/4Qz1nJNxfA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script>
-    $(function() {
-        $("#startDate").datepicker({
-            dateFormat: 'yy-mm-dd',
-            numberOfMonths: 2,
-            autoclose: true,
-            minDate: 0,
-
-            onClose: function(selectedDate) {
-                $("#endDate").datepicker("option", "minDate", selectedDate);
-                $("#endDate").datepicker("show");
-            }
-        });
-        $("#endDate").datepicker({
-            dateFormat: 'yy-mm-dd',
-            numberOfMonths: 2,
-            minDate: 0,
-            autoclose: true,
-
-
-        });
-
-    });
 </script>
 
 <script>

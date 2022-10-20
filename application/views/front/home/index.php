@@ -95,14 +95,20 @@
                     <div class="col-md-8">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="start_date" placeholder="Tanggal" aria-label="Tanggal" id="startDate">
-                            <span class="input-group-text bg-white"><i class="feather feather-calendar"></i></span>
-                            <input type="text" class="form-control" name="end_date" placeholder="Tanggal" aria-label="Tanggal" id="endDate">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary" name="submit">Cari Trip</button>
+                                <button type="submit" class="btn btn-primary" name="submit">
+                                    <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                        Search Trip
+                                    <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                        Cari Trip
+                                    <?php else : ?>
+                                        Cari Trip
+                                    <?php endif; ?>
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -128,8 +128,17 @@ $bank   = $this->bank_model->get_allbank();
                 <div class="col-md-10 mx-auto">
                     <ul class="breadcrumb my-3">
                         <li class="breadcrumb-item"><a href="<?php echo base_url('') ?>"><i class="ti ti-home"></i> Home</a></li>
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('post') ?>"> Berita</a></li>
-                        <li class="breadcrumb-item active"><?php echo $title ?></li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('post') ?>"> Article</a></li>
+                        <li class="breadcrumb-item active">
+                            <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                <?php echo $post->post_title_en; ?>
+                            <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                <?php echo $post->post_title; ?>
+                            <?php else : ?>
+                                <?php echo $post->post_title; ?>
+                            <?php endif; ?>
+
+                        </li>
                     </ul>
                 </div>
             </div>
