@@ -48,7 +48,7 @@ $term = $this->homepage_model->get_homepage();
                             Detail Pemesan
                         </div>
                         <div class="card-body">
-                            <?php echo form_open('order/create',  array('class' => 'needs-validation', 'novalidate' => 'novalidate')); ?>
+                            <?php echo form_open_multipart('order/create',  array('class' => 'needs-validation', 'novalidate' => 'novalidate')); ?>
                             <input type="hidden" name="tour_id" value="<?php echo $tour->tour_id; ?>">
                             <input type="hidden" name="tour_title" value="<?php echo $tour->tour_title; ?>">
                             <input type="hidden" name="price" value="<?php echo $tour->schedule_price; ?>">
