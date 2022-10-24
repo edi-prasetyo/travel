@@ -23,15 +23,18 @@ class Setting extends CI_Controller
     {
         parent::__construct();
         $this->load->model('setting_model');
+        $this->load->model('email_model');
     }
     // index
     public function index()
     {
         $setting = $this->setting_model->detail();
+        $email_order =  $this->email_model->email_order();
 
         $data    = [
             'title'                => 'Pengaturan',
             'setting'              => $setting,
+            'email_order'           => $email_order,
             'content'              => 'admin/setting/index'
         ];
         $this->load->view('admin/layout/wrapp', $data, FALSE);
@@ -94,6 +97,48 @@ class Setting extends CI_Controller
         ];
         $this->setting_model->update($data);
         $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah di Update</div>');
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+    // Email Order
+    public function email_order()
+    {
+        $email_order =  $this->email_model->email_order();
+        $id = $email_order->id;
+
+        $data  = [
+            'id'                        => $id,
+            'name'      => $this->input->post('name'),
+            'protocol'       => $this->input->post('protocol'),
+            'smtp_host'       => $this->input->post('smtp_host'),
+            'smtp_port'       => $this->input->post('smtp_port'),
+            'smtp_user'       => $this->input->post('smtp_user'),
+            'smtp_pass'       => $this->input->post('smtp_pass'),
+            'updated_at'                => date('Y-m-d H:i:s')
+        ];
+        $this->email_model->update_emailorder($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah di Update</div>');
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+    // Email Order active
+    public function emailorder_active()
+    {
+        $data = [
+            'id'                => 1,
+            'email_order'       => 1,
+        ];
+        $this->setting_model->update($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success">Email Order telah di Aktifkan</div>');
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+    // Email Order Inactive
+    public function emailorder_inactive()
+    {
+        $data = [
+            'id'                => 1,
+            'email_order'       => 0,
+        ];
+        $this->setting_model->update($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-danger">Email Order telah di Nonaktifkan</div>');
         redirect($_SERVER['HTTP_REFERER']);
     }
 }

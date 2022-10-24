@@ -109,6 +109,85 @@ if ($this->session->flashdata('message')) {
                     </div>
                 </div>
             </div>
+            <!-- Setting Email -->
+            <div class="col-xl-3 col-lg-4 col-md-12 col-12 my-3">
+                <div class="mb-4 mb-lg-0">
+                    <h4 class="mb-1">Email Sender</h4>
+                    <p class="mb-0 fs-5 text-muted">Setting Pengiriman Email Order </p>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-8 col-md-12 col-12 my-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class=" mb-6">
+                            <h4 class="mb-1">Email Order Settings</h4>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="addressLine" class="col-sm-4 col-form-label form-label">Email Order</label>
+                            <div class="col-md-8 col-12">
+                                <div class="d-grid gap-2">
+                                    <?php if ($setting->email_order == 0) : ?>
+                                        <div class="alert alert-danger">Inactive</div>
+                                        <a href="<?php echo base_url('admin/setting/emailorder_active'); ?>" class="btn btn-primary text-white">Active</a>
+                                    <?php else : ?>
+                                        <div class="alert alert-success">Active</div>
+                                        <a href="<?php echo base_url('admin/setting/emailorder_inactive'); ?>" class="btn btn-danger text-white">Inactive</a>
+
+
+                                        <?php echo form_open('admin/setting/email_order/'); ?>
+
+                                        <div class="mb-3 row">
+                                            <label for="addressLine" class="col-sm-4 col-form-label form-label">Name</label>
+                                            <div class="col-md-8 col-12">
+                                                <input type="text" class="form-control" name="name" value="<?php echo $email_order->name; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="addressLine" class="col-sm-4 col-form-label form-label">Protocol</label>
+                                            <div class="col-md-8 col-12">
+                                                <input type="text" class="form-control" name="protocol" value="<?php echo $email_order->protocol; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="addressLine" class="col-sm-4 col-form-label form-label">SMTP</label>
+                                            <div class="col-md-8 col-12">
+                                                <input type="text" class="form-control" name="smtp_host" value="<?php echo $email_order->smtp_host; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="addressLine" class="col-sm-4 col-form-label form-label">SMTP</label>
+                                            <div class="col-md-8 col-12">
+                                                <input type="text" class="form-control" name="smtp_port" value="<?php echo $email_order->smtp_port; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="addressLine" class="col-sm-4 col-form-label form-label">Email User</label>
+                                            <div class="col-md-8 col-12">
+                                                <input type="text" class="form-control" name="smtp_user" value="<?php echo $email_order->smtp_user; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="addressLine" class="col-sm-4 col-form-label form-label">Email Password</label>
+                                            <div class="col-md-8 col-12">
+                                                <input type="text" class="form-control" name="smtp_pass" value="<?php echo $email_order->smtp_pass; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="addressLineTwo" class="col-sm-4 col-form-label form-label"></label>
+                                            <div class="col-md-8 col-12">
+                                                <button type="submit" class="btn btn-primary text-white btn-block">
+                                                    <i class="fa fa-save"></i> Update
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <?php echo form_close(); ?>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

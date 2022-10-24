@@ -16,6 +16,14 @@ class Email_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    public function email_order()
+    {
+        $this->db->select('*');
+        $this->db->from('email');
+        $this->db->where('id', 2);
+        $query = $this->db->get();
+        return $query->row();
+    }
     public function detail_email($id)
     {
         $this->db->select('*');
@@ -26,6 +34,11 @@ class Email_model extends CI_Model
         return $query->row();
     }
     public function update($data)
+    {
+        $this->db->where('id', $data['id']);
+        $this->db->update('email', $data);
+    }
+    public function update_emailorder($data)
     {
         $this->db->where('id', $data['id']);
         $this->db->update('email', $data);
