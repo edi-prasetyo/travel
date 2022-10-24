@@ -110,9 +110,12 @@ $meta = $this->meta_model->get_meta() ?>
                             </div>
                             <?php if ($setting->payment_gateway == 0) : ?>
                                 Silahkan Transfer Ke Nomor Rekening di bawah ini
-                                <?php foreach ($bank as $bank) : ?>
-                                    <div class="alert alert-success"> <?php echo $bank->bank_name; ?> No. Rek <?php echo $bank->bank_number; ?> Atas Nama <?php echo $bank->bank_account; ?></div>
-                                <?php endforeach; ?>
+                                <div class="alert alert-success">
+                                    <?php foreach ($bank as $bank) : ?>
+                                        <?php echo $bank->bank_name; ?> No. Rek <?php echo $bank->bank_number; ?> Atas Nama <?php echo $bank->bank_account; ?>
+                                        <hr>
+                                    <?php endforeach; ?>
+                                </div>
                                 <a href="https://wa.me/<?php echo $meta->whatsapp; ?>" class="btn btn-success text-white" type="submit">
                                     <?php if ($this->session->userdata('language') == 'EN') : ?>
                                         <i class="fa-brands fa-whatsapp me-2"></i> Confirmation
