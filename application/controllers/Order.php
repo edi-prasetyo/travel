@@ -369,7 +369,7 @@ class Order extends CI_Controller
 
                   <tr>
                   <td>Link Pembayaran </td> 
-                  <td style="font-size:18px;color:#0070ee;">: ' . base_url('payment?id=' . md5($insert_id) . '</td>
+                  <td style="font-size:18px;color:#0070ee;">: ' . base_url('payment?id=' . md5($insert_id)) . '</td>
                   </tr>
                          
                   </table>
@@ -476,9 +476,6 @@ class Order extends CI_Controller
 
     if ($this->email->send()) {
       return true;
-    } else {
-      echo $this->email->print_debugger();
-      die;
     }
   }
   // success
