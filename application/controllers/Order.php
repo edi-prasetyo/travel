@@ -3,130 +3,130 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Order extends CI_Controller
 {
-    /**
-     * Development By Edi Prasetyo
-     * edikomputer@gmail.com
-     * 0812 3333 5523
-     * https://edikomputer.com
-     * https://grahastudio.com
-     * 
-     * index
-     * trip
-     * create
-     * success
-     * 
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->output->enable_profiler(FALSE);
-        $this->load->model('tour_model');
-        $this->load->model('schedule_model');
-        $this->load->model('meta_model');
-        $this->load->model('transaction_model');
-        $this->load->model('setting_model');
-        $this->load->model('email_model');
-        $this->load->library('pagination');
+  /**
+   * Development By Edi Prasetyo
+   * edikomputer@gmail.com
+   * 0812 3333 5523
+   * https://edikomputer.com
+   * https://grahastudio.com
+   * 
+   * index
+   * trip
+   * create
+   * success
+   * 
+   */
+  public function __construct()
+  {
+    parent::__construct();
+    $this->output->enable_profiler(FALSE);
+    $this->load->model('tour_model');
+    $this->load->model('schedule_model');
+    $this->load->model('meta_model');
+    $this->load->model('transaction_model');
+    $this->load->model('setting_model');
+    $this->load->model('email_model');
+    $this->load->library('pagination');
+  }
+  // index
+  public function index()
+  {
+    redirect(base_url(), 'refresh');
+  }
+  // trip
+  public function trip($id)
+  {
+    $meta       = $this->meta_model->get_meta();
+    $tour       = $this->schedule_model->detail_order($id);
+    $data = array(
+      'title'                       => 'Tour',
+      'deskripsi'                   => 'Trip - ' . $meta->description,
+      'keywords'                    => 'Trip - ' . $meta->keywords,
+      'paginasi'                    => $this->pagination->create_links(),
+      'tour'                        => $tour,
+      'content'                     => 'front/order/trip'
+    );
+    $this->load->view('front/layout/wrapp', $data, FALSE);
+  }
+  // create
+  public function create()
+  {
+    $setting = $this->setting_model->detail();
+    $this->form_validation->set_rules(
+      'fullname',
+      'Nama',
+      'required',
+      array(
+        'required'                        => '%s Harus Diisi',
+      )
+    );
+    if ($this->form_validation->run() === FALSE) {
+      $data = [
+        'title'                           => 'Order',
+        'content'                         => 'front/order/trip'
+      ];
+      $this->load->view('front/layout/wrapp', $data, FALSE);
+    } else {
+      $invoice_number = strtoupper(random_string('numeric', 7));
+
+      $price = $this->input->post('price');
+      $quantity = $this->input->post('quantity');
+      $total_price = (int)$price * (int)$quantity;
+
+      $data  = [
+        'fullname'              => $this->input->post('fullname'),
+        'email'                 => $this->input->post('email'),
+        'phone'                 => $this->input->post('phone'),
+        'address'               => $this->input->post('address'),
+        'tour_id'               => $this->input->post('tour_id'),
+        'schedule_id'               => $this->input->post('schedule_id'),
+        'tour_title'            => $this->input->post('tour_title'),
+        'tour_date'             => $this->input->post('tour_date'),
+        'address'               => $this->input->post('address'),
+        'payment'               => $this->input->post('payment'),
+        'quantity'              => $quantity,
+        'price'                 => $price,
+        'total_price'           => $total_price,
+        'invoice_number'        => $invoice_number,
+        'payment_status'        => 'pending',
+        'created_at'            => date('Y-m-d')
+      ];
+      $insert_id = $this->transaction_model->create($data);
+      if ($setting->email_order == 1) {
+        $this->_sendEmail($insert_id);
+        $this->session->set_flashdata('sukses', 'Checkout Berhasil');
+        redirect(base_url('payment?id=' . md5($insert_id)), 'refresh');
+      } else {
+        $this->session->set_flashdata('sukses', 'Checkout Berhasil');
+        redirect(base_url('payment?id=' . md5($insert_id)), 'refresh');
+      }
     }
-    // index
-    public function index()
-    {
-        redirect(base_url(), 'refresh');
-    }
-    // trip
-    public function trip($id)
-    {
-        $meta       = $this->meta_model->get_meta();
-        $tour       = $this->schedule_model->detail_order($id);
-        $data = array(
-            'title'                       => 'Tour',
-            'deskripsi'                   => 'Trip - ' . $meta->description,
-            'keywords'                    => 'Trip - ' . $meta->keywords,
-            'paginasi'                    => $this->pagination->create_links(),
-            'tour'                        => $tour,
-            'content'                     => 'front/order/trip'
-        );
-        $this->load->view('front/layout/wrapp', $data, FALSE);
-    }
-    // create
-    public function create()
-    {
-        $setting = $this->setting_model->detail();
-        $this->form_validation->set_rules(
-            'fullname',
-            'Nama',
-            'required',
-            array(
-                'required'                        => '%s Harus Diisi',
-            )
-        );
-        if ($this->form_validation->run() === FALSE) {
-            $data = [
-                'title'                           => 'Order',
-                'content'                         => 'front/order/trip'
-            ];
-            $this->load->view('front/layout/wrapp', $data, FALSE);
-        } else {
-            $invoice_number = strtoupper(random_string('numeric', 7));
+  }
 
-            $price = $this->input->post('price');
-            $quantity = $this->input->post('quantity');
-            $total_price = (int)$price * (int)$quantity;
+  private function _sendEmail($insert_id)
+  {
+    $email_order = $this->email_model->email_order();
+    $transaction  = $this->transaction_model->last_detail($insert_id);
+    $meta = $this->meta_model->get_meta();
 
-            $data  = [
-                'fullname'              => $this->input->post('fullname'),
-                'email'                 => $this->input->post('email'),
-                'phone'                 => $this->input->post('phone'),
-                'address'               => $this->input->post('address'),
-                'tour_id'               => $this->input->post('tour_id'),
-                'schedule_id'               => $this->input->post('schedule_id'),
-                'tour_title'            => $this->input->post('tour_title'),
-                'tour_date'             => $this->input->post('tour_date'),
-                'address'               => $this->input->post('address'),
-                'payment'               => $this->input->post('payment'),
-                'quantity'              => $quantity,
-                'price'                 => $price,
-                'total_price'           => $total_price,
-                'invoice_number'        => $invoice_number,
-                'payment_status'        => 'pending',
-                'created_at'            => date('Y-m-d')
-            ];
-            $insert_id = $this->transaction_model->create($data);
-            if ($setting->email_order == 1) {
-                $this->_sendEmail($insert_id);
-                $this->session->set_flashdata('sukses', 'Checkout Berhasil');
-                redirect(base_url('payment?id=' . md5($insert_id)), 'refresh');
-            } else {
-                $this->session->set_flashdata('sukses', 'Checkout Berhasil');
-                redirect(base_url('payment?id=' . md5($insert_id)), 'refresh');
-            }
-        }
-    }
+    $config = [
+      'protocol'     => "$email_order->protocol",
+      'smtp_host'   => "$email_order->smtp_host",
+      'smtp_port'   => $email_order->smtp_port,
+      'smtp_user'   => "$email_order->smtp_user",
+      'smtp_pass'   => "$email_order->smtp_pass",
+      'mailtype'     => 'html',
+      'charset'     => 'utf-8',
+    ];
 
-    private function _sendEmail($insert_id)
-    {
-        $email_order = $this->email_model->email_order();
-        $transaction  = $this->transaction_model->last_detail($insert_id);
-        $meta = $this->meta_model->get_meta();
+    $this->load->library('email', $config);
+    $this->email->initialize($config);
+    $this->email->set_newline("\r\n");
+    $this->email->from("$email_order->smtp_user", 'Order');
+    $this->email->to($this->input->post('user_email'));
 
-        $config = [
-            'protocol'     => "$email_order->protocol",
-            'smtp_host'   => "$email_order->smtp_host",
-            'smtp_port'   => $email_order->smtp_port,
-            'smtp_user'   => "$email_order->smtp_user",
-            'smtp_pass'   => "$email_order->smtp_pass",
-            'mailtype'     => 'html',
-            'charset'     => 'utf-8',
-        ];
-
-        $this->load->library('email', $config);
-        $this->email->initialize($config);
-        $this->email->set_newline("\r\n");
-        $this->email->from("$email_order->smtp_user", 'Order');
-        $this->email->to($this->input->post('user_email'));
-
-        $this->email->subject('Order ' . $transaction->order_id . '');
-        $this->email->message('
+    $this->email->subject('Order ' . $transaction->order_id . '');
+    $this->email->message('
                          
                            
                       
@@ -471,12 +471,15 @@ class Order extends CI_Controller
 </html>
         ');
 
-        if ($this->email->send()) {
-            return true;
-        }
+    if ($this->email->send()) {
+      return true;
+    } else {
+      echo $this->email->print_debugger();
+      die;
     }
-    // success
-    public function success($insert_id)
-    {
-    }
+  }
+  // success
+  public function success($insert_id)
+  {
+  }
 }
