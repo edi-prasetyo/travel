@@ -307,7 +307,7 @@ class Order extends CI_Controller
                 <tr>
                   <td class="header center" width="100%" >
                     <a href="' . $meta->link . '" style="color:#ffffff;">
-                    <img class="left" width="20%" height="auto" src="' . base_url('assets/img/logo/' . $meta->logo) . '" alt="Sewamobiloka">
+                    <img class="left" width="20%" height="auto" src="' . base_url('assets/img/logo/' . $meta->logo) . '" alt="' . $meta->title . '">
                     </a>
                   </td>
                 </tr>
@@ -350,23 +350,26 @@ class Order extends CI_Controller
                 
                 
                   <tr>
-                  <td>Mobil </td> 
+                  <td>Layanan </td> 
                   <td>: ' . $transaction->tour_title . ' <br> ' . $transaction->tour_date . ' </td>
                   </tr>
+                
 
-                  <tr>
-                  <td>Harga </td> 
-                  <td>: Rp. ' . number_format($transaction->price, 0, ",", ".") . '</td>
-                  </tr>
+                
 
                   <tr>
                   <td>Quantity </td> 
-                  <td>: ' . $transaction->quantity . ' Hari</td>
+                  <td>: ' . $transaction->quantity . ' Pack</td>
                   </tr>
 
                   <tr>
                   <td>Total Harga </td> 
                   <td style="font-size:18px;color:#0070ee;">: <b>Rp. ' . number_format($transaction->total_price, 0, ",", ".") . '</b></td>
+                  </tr>
+
+                  <tr>
+                  <td>Link Pembayaran </td> 
+                  <td style="font-size:18px;color:#0070ee;">: ' . base_url('payment?id=' . md5($insert_id) . '</td>
                   </tr>
                          
                   </table>
@@ -402,7 +405,7 @@ class Order extends CI_Controller
 
                   <tr>
                   <td>Tanggal Trip </td> 
-                  <td>: ' . $transaction->tour_date . '</td>
+                  <td>: ' . date("j M Y", strtotime($transaction->tour_date)) . '</td>
                   </tr>
                           
                   </table>
