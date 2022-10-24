@@ -149,13 +149,13 @@ if ($this->session->flashdata('message')) {
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
-                                            <label for="addressLine" class="col-sm-4 col-form-label form-label">SMTP</label>
+                                            <label for="addressLine" class="col-sm-4 col-form-label form-label"> Host</label>
                                             <div class="col-md-8 col-12">
                                                 <input type="text" class="form-control" name="smtp_host" value="<?php echo $email_order->smtp_host; ?>">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
-                                            <label for="addressLine" class="col-sm-4 col-form-label form-label">SMTP</label>
+                                            <label for="addressLine" class="col-sm-4 col-form-label form-label"> Port</label>
                                             <div class="col-md-8 col-12">
                                                 <input type="text" class="form-control" name="smtp_port" value="<?php echo $email_order->smtp_port; ?>">
                                             </div>
