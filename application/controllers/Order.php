@@ -123,7 +123,7 @@ class Order extends CI_Controller
     $this->email->initialize($config);
     $this->email->set_newline("\r\n");
     $this->email->from("$email_order->smtp_user", 'Order');
-    $this->email->to($this->input->post('user_email'));
+    $this->email->to($this->input->post('email'));
 
     $this->email->subject('Order ' . $transaction->order_id . '');
     $this->email->message('
