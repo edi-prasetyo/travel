@@ -394,7 +394,7 @@ $bank   = $this->bank_model->get_allbank();
     <script>
         var link = "<?php echo base_url('tour/detail/' . $tour->tour_slug); ?>";
         var title = "<?php echo  $tour->tour_title; ?>";
-        var deskripsi = "<?php echo  $tour->tour_description; ?>";
+        var deskripsi = "<?php echo  $tour->meta_description; ?>";
         var currentLocation = window.location;
         var top = (screen.height - 570) / 2;
         var left = (screen.width - 570) / 2;
