@@ -339,37 +339,26 @@ class Order extends CI_Controller
                   </tr>
                 </table>
 
-                <br>
-
                 <div style="border:1px solid #ddd;border-radius:4px">
                 <div style="background:#0279d6;color:#ffff;padding:5px 0 5px 20px;border-radius:4px 4px 0 0">
                 <b>Informasi Order</b>
                 </div>
                 <div style="padding:10px;">
                 <table cellspacing="0" cellpadding="0" width="100%">
-                
-                
+              
                   <tr>
                   <td>Layanan </td> 
-                  <td>: ' . $transaction->tour_title . ' <br> ' . $transaction->tour_date . ' </td>
+                  <td>: ' . $transaction->tour_title . ' </td>
                   </tr>
-                
-
-                
-
-                  <tr>
-                  <td>Quantity </td> 
-                  <td>: ' . $transaction->quantity . ' Pack</td>
-                  </tr>
-
+                  
                   <tr>
                   <td>Total Harga </td> 
                   <td style="font-size:18px;color:#0070ee;">: <b>Rp. ' . number_format($transaction->total_price, 0, ",", ".") . '</b></td>
                   </tr>
 
                   <tr>
-                  <td>Link Pembayaran </td> 
-                  <td style="font-size:18px;color:#0070ee;">: ' . base_url('payment?id=' . md5($insert_id)) . '</td>
+                  <td> Bayar </td> 
+                  <td>: ' . base_url('payment?id=' . md5($insert_id)) . '</td>
                   </tr>
                          
                   </table>

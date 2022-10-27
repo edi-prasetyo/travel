@@ -181,7 +181,7 @@ class Payment extends CI_Controller
         if ($transaction->status_code == 200) {
             $data = [
                 'id'             => $schedule_id,
-                'schedule_stock'            => $update_stock,
+                'schedule_stock'  => $update_stock,
             ];
             $this->schedule_model->update_stock_paymentgateway($data);
         } else {

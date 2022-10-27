@@ -99,7 +99,7 @@
                 <label class="col-lg-3 col-form-label">Tour Facility (EN) <span class="text-danger">*</span>
                 </label>
                 <div class="col-lg-9">
-                    <textarea id="summernote4" class="form-control" name="tour_facility" placeholder="Facility"><?php echo $tour->tour_facility_en; ?></textarea>
+                    <textarea id="summernote4" class="form-control" name="tour_facility_en" placeholder="Facility"><?php echo $tour->tour_facility_en; ?></textarea>
                 </div>
             </div>
             <div class="form-group row mb-3">
