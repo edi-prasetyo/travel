@@ -402,7 +402,7 @@ $bank   = $this->bank_model->get_allbank();
         console.log(encodeURI(link + title + deskripsi));
 
         function _fb() {
-            var url = "https://web.facebook.com/sharer.php?u=" + encodeURI(link + "" + title + " " + deskripsi);
+            var url = "https://web.facebook.com/sharer.php?u=" + encodeURI(link + " " + title + " " + deskripsi);
             window.open(url, 'NewWindow', params);
         }
 
@@ -412,12 +412,12 @@ $bank   = $this->bank_model->get_allbank();
         }
 
         function _whatsapp() {
-            var url = "https://api.whatsapp.com/send?phone=&text=" + encodeURI(link + "" + title + " " + deskripsi);
+            var url = "https://api.whatsapp.com/send?phone=&text=" + encodeURI(link + " " + title + " " + deskripsi);
             window.open(url, 'NewWindow', params);
         }
 
         function _pinterest() {
-            var url = "http://pinterest.com/pin/create/button/?url=" + encodeURI(link + "" + title + " " + deskripsi);
+            var url = "http://pinterest.com/pin/create/button/?url=" + encodeURI(link + " " + title + " " + deskripsi);
             window.open(url, 'NewWindow', params);
         }
     </script>
