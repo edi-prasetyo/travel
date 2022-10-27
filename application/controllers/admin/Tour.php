@@ -210,7 +210,6 @@ class Tour extends CI_Controller
                         'id'                        => $id,
                         'user_id'                   => $this->session->userdata('id'),
                         'tour_title'                => $this->input->post('tour_title'),
-                        'tour_facility'             => $this->input->post('tour_facility'),
                         'tour_price'                => $this->input->post('tour_price'),
                         'tour_duration'             => $this->input->post('tour_duration'),
                         'tour_facility'          => $this->input->post('tour_facility'),

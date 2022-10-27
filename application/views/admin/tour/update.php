@@ -83,7 +83,7 @@
             <label class="col-lg-3 col-form-label">Keywords
             </label>
             <div class="col-lg-9">
-                <input type="text" class="form-control" name="tour_keywords" placeholder="Pisahkan dengan koma" value="<?php echo set_value('tour_keywords'); ?>">
+                <input type="text" class="form-control" name="tour_keywords" placeholder="Pisahkan dengan koma" value="<?php echo $tour->tour_keywords; ?>">
             </div>
         </div>
         <?php if ($setting->language == 1) : ?>
