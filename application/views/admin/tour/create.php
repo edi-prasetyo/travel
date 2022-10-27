@@ -81,6 +81,15 @@
                 <input type="text" class="form-control" name="tour_keywords" placeholder="Pisahkan dengan koma" value="<?php echo set_value('tour_keywords'); ?>">
             </div>
         </div>
+        <div class="form-group row mb-3">
+            <label class="col-lg-3 col-form-label">Meta Deskripsi <span class="text-danger">*</span>
+            </label>
+            <div class="col-lg-9">
+                <textarea class="form-control" name="meta_description" placeholder="Deskripsi" required><?php echo set_value('meta_description'); ?></textarea>
+                <div class="invalid-feedback">Silahkan Isi Meta Deskripsi</div>
+            </div>
+        </div>
+
         <?php if ($setting->language == 1) : ?>
             <hr>
             <div class="form-group row mb-3">

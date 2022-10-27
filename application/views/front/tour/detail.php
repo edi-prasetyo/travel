@@ -18,7 +18,7 @@ $bank   = $this->bank_model->get_allbank();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?php echo $meta->title ?> | <?php echo $meta->tagline ?></title>
     <link rel="shortcut icon" href="<?php echo base_url('assets/img/logo/' . $meta->favicon); ?>">
-    <meta name="description" content="<?php echo $deskripsi ?>">
+    <meta name="description" content="<?php echo $tour->meta_description; ?>">
     <meta name="keywords" content="<?php echo $meta->title . ',' . $tour->tour_keywords ?>">
     <meta name="author" content="<?php echo $meta->title ?>">
     <meta name="google-site-verification" content="<?php echo $meta->google_meta ?>" />
@@ -27,11 +27,11 @@ $bank   = $this->bank_model->get_allbank();
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="<?php echo $tour->tour_title; ?>" />
-    <meta property="og:description" content="<?php echo $deskripsi ?>" />
+    <meta property="og:description" content="<?php echo $tour->meta_description ?>" />
     <meta property="og:url" content="<?php echo base_url(); ?>" />
     <meta property="og:image" content="<?php echo base_url('assets/img/tour/' . $tour->tour_image); ?>" />
     <meta property="og:site_name" content="<?php echo $meta->title ?>" />
-    <meta name="twitter:description" content="<?php echo $deskripsi ?>" />
+    <meta name="twitter:description" content="<?php echo $tour->meta_description ?>" />
     <meta name="twitter:title" content="<?php echo $tour->tour_title ?>" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/web/vendor/offcanvas/offcanvas.css">
     <link href="<?php echo base_url('assets/template/web/vendor/icons/feather-icons/feather.css'); ?>" rel="stylesheet">
