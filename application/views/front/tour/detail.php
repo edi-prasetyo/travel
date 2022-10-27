@@ -26,7 +26,7 @@ $bank   = $this->bank_model->get_allbank();
     <link rel="canonical" href="<?php echo base_url(); ?>" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="<?php echo $tour->tour_title; ?>" />
+    <meta property="og:title" content="<?php echo $meta->title . ' | ' . $tour->tour_title; ?>" />
     <meta property="og:description" content="<?php echo $meta->title . ' | ' . $tour->meta_description ?>" />
     <meta property="og:url" content="<?php echo base_url(); ?>" />
     <meta property="og:image" content="<?php echo base_url('assets/img/tour/' . $tour->tour_image); ?>" />
