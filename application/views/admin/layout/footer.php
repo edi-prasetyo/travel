@@ -55,6 +55,12 @@
 
         tooltip: false
     });
+    $('#summernote5').summernote({
+        tabsize: 2,
+        height: 130,
+
+        tooltip: false
+    });
 </script>
 <!--Menu Toggle Script-->
 <script>

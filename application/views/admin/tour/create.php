@@ -60,6 +60,14 @@
             </div>
         </div>
         <div class="form-group row mb-3">
+            <label class="col-lg-3 col-form-label">Plan <span class="text-danger">*</span>
+            </label>
+            <div class="col-lg-9">
+                <textarea class="form-control" id="summernote5" name="tour_plan" placeholder="Plan" required><?php echo set_value('tour_plan'); ?></textarea>
+                <div class="invalid-feedback">Silahkan Isi Deskripsi Tour Plan</div>
+            </div>
+        </div>
+        <div class="form-group row mb-3">
             <label class="col-lg-3 col-form-label">Fasilitas <span class="text-danger">*</span>
             </label>
             <div class="col-lg-9">

@@ -125,98 +125,116 @@ $bank   = $this->bank_model->get_allbank();
     <main class="my-5 mt-5">
         <div class="breadcrumb">
             <div class="container">
-                <ul class="breadcrumb my-3">
-                    <li class="breadcrumb-item"><a class="text-muted" href="<?php echo base_url('') ?>"><i class="ti ti-home"></i> Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-muted" href="<?php echo base_url('tour') ?>"> Tour</a></li>
-                    <li class="breadcrumb-item active">
-                        <?php if ($this->session->userdata('language') == 'EN') : ?>
-                            <?php echo $tour->tour_title_en ?>
-                        <?php elseif ($this->session->userdata('language') == 'ID') : ?>
-                            <?php echo $tour->tour_title ?>
-                        <?php else : ?>
-                            <?php echo $tour->tour_title ?>
-                        <?php endif; ?>
-                    </li>
-                </ul>
+                <div class="col-md-10 mx-auto">
+                    <ul class="breadcrumb my-3">
+                        <li class="breadcrumb-item"><a class="text-muted" href="<?php echo base_url('') ?>"><i class="ti ti-home"></i> Home</a></li>
+                        <li class="breadcrumb-item"><a class="text-muted" href="<?php echo base_url('tour') ?>"> Tour</a></li>
+                        <li class="breadcrumb-item active">
+                            <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                <?php echo $tour->tour_title_en ?>
+                            <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                <?php echo $tour->tour_title ?>
+                            <?php else : ?>
+                                <?php echo $tour->tour_title ?>
+                            <?php endif; ?>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="container mb-3">
-            <div class="card mb-3">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <img class="img-fluid rounded" src="<?php echo base_url('assets/img/tour/' . $tour->tour_image); ?>">
-                        </div>
-                        <div class="col-md-7">
-                            <h2><?php if ($this->session->userdata('language') == 'EN') : ?>
-                                    <?php echo $tour->tour_title_en; ?>
-                                <?php elseif ($this->session->userdata('language') == 'ID') : ?>
-                                    <?php echo $tour->tour_title; ?>
-                                <?php else : ?>
-                                    <?php echo $tour->tour_title; ?>
-                                <?php endif; ?></h2>
-                            <div class="progress" style="height:5px">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="col-md-10 mx-auto">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="mb-5"><?php if ($this->session->userdata('language') == 'EN') : ?>
+                                <?php echo $tour->tour_title_en; ?>
+                            <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                <?php echo $tour->tour_title; ?>
+                            <?php else : ?>
+                                <?php echo $tour->tour_title; ?>
+                            <?php endif; ?>
+                        </h2>
+
+                    </div>
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Share <i class="fa-solid fa-square-share-nodes"></i>
                             </div>
-                            <?php if ($this->session->userdata('language') == 'EN') : ?>
-                                <?php echo $tour->tour_description_en; ?>
-                            <?php elseif ($this->session->userdata('language') == 'ID') : ?>
-                                <?php echo $tour->tour_description; ?>
-                            <?php else : ?>
-                                <?php echo $tour->tour_description; ?>
-                            <?php endif; ?>
-                            <h3>
-                                <?php if ($this->session->userdata('language') == 'EN') : ?>
-                                    Facility
-                                <?php elseif ($this->session->userdata('language') == 'ID') : ?>
-                                    Fasilitas
-                                <?php else : ?>
-                                    Fasilitas
-                                <?php endif; ?>
-                            </h3>
-
-                            <?php if ($this->session->userdata('language') == 'EN') : ?>
-                                <?php echo $tour->tour_facility_en; ?>
-                            <?php elseif ($this->session->userdata('language') == 'ID') : ?>
-                                <?php echo $tour->tour_facility; ?>
-                            <?php else : ?>
-                                <?php echo $tour->tour_facility; ?>
-                            <?php endif; ?>
-
-                            <div class="card-footer bg-white">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        Share <i class="fa-solid fa-square-share-nodes"></i>
-                                    </div>
-                                    <div class="col-md-3 col-6 my-2">
-                                        <div class="d-grid gap-2">
-                                            <button class="btn btn-primary btn-sm" onclick="_fb();" alt="facebook"><i class="fa-brands fa-facebook"></i> Facebook</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-6 my-2">
-                                        <div class="d-grid gap-2">
-                                            <button class="btn btn-info btn-sm text-white" onclick="_twitter();" alt="twitter"><i class="fa-brands fa-twitter"></i> Twitter</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-6 my-2">
-                                        <div class="d-grid gap-2">
-                                            <button class="btn btn-success btn-sm" onclick="_whatsapp();" alt="whatsapp"><i class="fa-brands fa-whatsapp"></i> Whatsapp</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-6 my-2">
-                                        <div class="d-grid gap-2">
-                                            <button class="btn btn-danger btn-sm" onclick="_pinterest();" alt="pinterest"><i class="fa-brands fa-pinterest"></i> Pinterest</button>
-                                        </div>
-                                    </div>
+                            <div class="col-md-3 col-6 my-2">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary btn-sm" onclick="_fb();" alt="facebook"><i class="fa-brands fa-facebook"></i> Facebook</button>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6 my-2">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-info btn-sm text-white" onclick="_twitter();" alt="twitter"><i class="fa-brands fa-twitter"></i> Twitter</button>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6 my-2">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-success btn-sm" onclick="_whatsapp();" alt="whatsapp"><i class="fa-brands fa-whatsapp"></i> Whatsapp</button>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6 my-2">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-danger btn-sm" onclick="_pinterest();" alt="pinterest"><i class="fa-brands fa-pinterest"></i> Pinterest</button>
                                 </div>
                             </div>
                         </div>
+                        <img class="img-fluid rounded mb-3" src="<?php echo base_url('assets/img/tour/' . $tour->tour_image); ?>">
+                        <?php if ($this->session->userdata('language') == 'EN') : ?>
+                            <?php echo $tour->tour_description_en; ?>
+                        <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                            <?php echo $tour->tour_description; ?>
+                        <?php else : ?>
+                            <?php echo $tour->tour_description; ?>
+                        <?php endif; ?>
+
                     </div>
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>
+                                    <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                        Itinerary
+                                    <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                        Rencana Perjalanan
+                                    <?php else : ?>
+                                        Rencana Perjalanan
+                                    <?php endif; ?>
+                                </h3>
+                                <?php echo $tour->tour_plan; ?>
+                                <h3>
+                                    <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                        Facility
+                                    <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                        Fasilitas
+                                    <?php else : ?>
+                                        Fasilitas
+                                    <?php endif; ?>
+                                </h3>
+
+                                <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                    <?php echo $tour->tour_facility_en; ?>
+                                <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                    <?php echo $tour->tour_facility; ?>
+                                <?php else : ?>
+                                    <?php echo $tour->tour_facility; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
+
+
+
             <div class="row">
                 <?php if (!$schedule) : ?>
-                    <div class="col-md-12 col-12">
+                    <div class="col-md-10 mx-auto my-5">
                         <div class="card">
                             <div class="card-body">
                                 <h3>
