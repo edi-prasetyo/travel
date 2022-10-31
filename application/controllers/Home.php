@@ -17,6 +17,7 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('pagination');
         $this->load->model('meta_model');
         $this->load->model('post_model');
         $this->load->model('homepage_model');
@@ -30,9 +31,20 @@ class Home extends CI_Controller
         $meta                   = $this->meta_model->get_meta();
         $post                   = $this->post_model->post_home();
         $homepage               = $this->homepage_model->get_homepage();
-        $service                = $this->service_model->get_service();
+
+
         $tour                   = $this->tour_model->tour_home();
         $popular_tour           = $this->tour_model->get_popular();
+
+
+
+        $service = $this->service_model->get_service_home();
+
+        // $query = $this->db->query("SELECT * FROM tour LIMIT 4;");
+        // $tour = $query->result();
+        // var_dump($tour);
+        // die;
+
 
         $data = array(
             'title'                 => $meta->title . ' - ' . $meta->tagline,

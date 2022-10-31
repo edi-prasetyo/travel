@@ -9,7 +9,16 @@ class Service_model extends CI_Model
         parent::__construct();
         $this->load->database();
     }
-    public function get_service()
+    public function get_service($limit, $start)
+    {
+        $this->db->select('*');
+        $this->db->from('service');
+        $this->db->limit($limit, $start);
+        $this->db->order_by('id', 'DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function get_service_home()
     {
         $this->db->select('*');
         $this->db->from('service');

@@ -17,7 +17,7 @@ class Tour_model extends CI_Model
     // Join
     $this->db->join('user', 'user.id = tour.user_id', 'LEFT');
     //End Join
-    $this->db->order_by('id', 'DESC');
+    $this->db->order_by('tour.id', 'DESC');
     $this->db->limit($limit, $start);
     $query = $this->db->get();
     return $query->result();
@@ -31,7 +31,7 @@ class Tour_model extends CI_Model
     $this->db->join('user', 'user.id = tour.user_id', 'LEFT');
     //End Join
     $this->db->where(['tour_status'     =>  'Publish']);
-    $this->db->order_by('id', 'DESC');
+    $this->db->order_by('tour.id', 'DESC');
     $query = $this->db->get();
     return $query->result();
   }
@@ -40,7 +40,7 @@ class Tour_model extends CI_Model
   {
     $this->db->select('*');
     $this->db->from('tour');
-    $this->db->where('id', $id);
+    $this->db->where('tour.id', $id);
     $query = $this->db->get();
     return $query->row();
   }
@@ -71,22 +71,14 @@ class Tour_model extends CI_Model
     $this->db->join('user', 'user.id = tour.user_id', 'LEFT');
     //End Join
     $this->db->where(['tour_status'     =>  'Publish']);
-    $this->db->order_by('id', 'DESC');
+    $this->db->order_by('tour.id', 'DESC');
     $this->db->limit($limit, $start);
     $query = $this->db->get();
     return $query->result();
   }
   public function tour_home()
   {
-    $this->db->select('tour.*, user.user_name');
-    $this->db->from('tour');
-    // Join
-    $this->db->join('user', 'user.id = tour.user_id', 'LEFT');
-    //End Join
-    $this->db->where(['tour_status'     =>  1]);
-    $this->db->order_by('tour.id', 'DESC');
-    $this->db->limit(4);
-    $query = $this->db->get();
+    $query = $this->db->query("SELECT * FROM tour LIMIT 4;");
     return $query->result();
   }
 
@@ -99,7 +91,7 @@ class Tour_model extends CI_Model
     $this->db->join('user', 'user.id = tour.user_id', 'LEFT');
     //End Join
     $this->db->where(['tour_status'     =>  'Publish']);
-    $this->db->order_by('id', 'DESC');
+    $this->db->order_by('tour.id', 'DESC');
     $query = $this->db->get();
     return $query->result();
   }
@@ -115,7 +107,7 @@ class Tour_model extends CI_Model
       'tour_status'           => 1,
       'tour.tour_slug'      =>  $tour_slug
     ));
-    $this->db->order_by('id', 'DESC');
+    $this->db->order_by('tour.id', 'DESC');
     $query = $this->db->get();
     return $query->row();
   }

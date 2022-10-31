@@ -46,6 +46,7 @@ class Payment extends CI_Controller
     // index
     public function index()
     {
+
         $insert_id = $this->input->get('id');
         $transaction        = $this->transaction_model->payment($insert_id);
         $bank = $this->bank_model->get_allbank();
