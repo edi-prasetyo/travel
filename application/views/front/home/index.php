@@ -159,15 +159,9 @@
                                 <?php endif; ?>
                             </a>
                         </div>
-                        <div class="card-footer bg-white">
-                            <div class="row">
-                                <div class="col-6">
-                                    <i class="fa-solid fa-calendar-day"></i> <?php echo $tour->tour_duration; ?>
-                                </div>
-                                <div class="col-6 text-end">
-                                    <i class="fa-regular fa-heart"></i> <?php echo $tour->tour_views; ?>
-                                </div>
-                            </div>
+                        <div class="card-footer bg-white d-flex justify-content-between align-items-start">
+                            <span><i class="fa-solid fa-calendar-day"></i> <?php echo $tour->tour_duration; ?></span>
+                            <span><i class="fa-regular fa-heart"></i> <?php echo $tour->tour_views; ?></span>
                         </div>
                     </div>
                 </div>
