@@ -1058,27 +1058,31 @@ a:link {
     box-shadow: 0 16px 15px -10px rgba(0, 0, 0, 0.07), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
-/* Tabs */
-#tabs{
-	background: #007b5e;
-    color: #eee;
-}
-#tabs h6.section-title{
-    color: #eee;
-}
 
-#tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    color: #f3f3f3;
-    background-color: transparent;
-    border-color: transparent transparent #f3f3f3;
-    border-bottom: 4px solid !important;
-    font-size: 20px;
-    font-weight: bold;
-}
-#tabs .nav-tabs .nav-link {
-    border: 1px solid transparent;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
-    color: #eee;
-    font-size: 20px;
-}
+
+/* Tab Style */
+  
+a.active {
+	border-bottom: 2px solid #55c57a !important;
+  }
+  
+  .nav-link {
+	color: rgb(110, 110, 110) !important;
+	font-weight: 500 !important;
+	padding: 10px !important;
+  }
+  /* .nav-link:hover {
+	color: #55c57a !important;
+  } */
+  
+  .nav-pills .nav-link.active {
+	color: black !important;
+	background-color: white !important;
+	border-radius: 0.5rem 0.5rem 0 0 !important;
+	padding: 10px !important;
+  }
+  
+  .tab-content {
+	padding-bottom: 1.3rem !important;
+  }
+  

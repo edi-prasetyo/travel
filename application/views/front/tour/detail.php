@@ -193,42 +193,83 @@ $bank   = $this->bank_model->get_allbank();
 
                     </div>
                     <div class="col-md-5">
-                        <div class="card">
-                            <div class="card-body">
-                                <h3>
-                                    <?php if ($this->session->userdata('language') == 'EN') : ?>
-                                        Itinerary
-                                    <?php elseif ($this->session->userdata('language') == 'ID') : ?>
-                                        Rencana Perjalanan
-                                    <?php else : ?>
-                                        Rencana Perjalanan
-                                    <?php endif; ?>
-                                </h3>
-                                <?php echo $tour->tour_plan; ?>
-                                <h3>
-                                    <?php if ($this->session->userdata('language') == 'EN') : ?>
-                                        Facility
-                                    <?php elseif ($this->session->userdata('language') == 'ID') : ?>
-                                        Fasilitas
-                                    <?php else : ?>
-                                        Fasilitas
-                                    <?php endif; ?>
-                                </h3>
 
-                                <?php if ($this->session->userdata('language') == 'EN') : ?>
-                                    <?php echo $tour->tour_facility_en; ?>
-                                <?php elseif ($this->session->userdata('language') == 'ID') : ?>
-                                    <?php echo $tour->tour_facility; ?>
-                                <?php else : ?>
-                                    <?php echo $tour->tour_facility; ?>
-                                <?php endif; ?>
+                        <div class="card shadow-sm d-flex justify-content-center mt-5">
+                            <!-- nav options -->
+                            <ul class="nav nav-pills mb-3 shadow-sm" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
+                                        <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                            Itinerary
+                                        <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                            Rencana Perjalanan
+                                        <?php else : ?>
+                                            Rencana Perjalanan
+                                        <?php endif; ?>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
+                                        <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                            Facility
+                                        <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                            Fasilitas
+                                        <?php else : ?>
+                                            Fasilitas
+                                        <?php endif; ?>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                            <!-- content -->
+                            <div class="tab-content" id="pills-tabContent p-3">
+                                <!-- 1st card -->
+                                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                    <div class="card-body">
+                                        <?php echo $tour->tour_plan; ?>
+                                    </div>
+                                </div>
+                                <!-- 2nd card -->
+                                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                    <div class="card-body">
+                                        <?php if ($this->session->userdata('language') == 'EN') : ?>
+                                            <?php echo $tour->tour_facility_en; ?>
+                                        <?php elseif ($this->session->userdata('language') == 'ID') : ?>
+                                            <?php echo $tour->tour_facility; ?>
+                                        <?php else : ?>
+                                            <?php echo $tour->tour_facility; ?>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
